@@ -18,12 +18,15 @@ function Phrase(content) {
   // For example:
   //  new Phrase("Hello, world!").letters() === "Helloworld"
   this.letters = function letters() {
-    const lettersRegEx = /[a-z]/gi;
-    return (this.content.match(lettersRegEx) || []).join("");
+    return (this.content.match(/[a-z]/gi) || []).join("");
   };
 
   // Returns true for a palindrome, false otherwise
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+    if (this.processedContent()) {
+      return this.processedContent() === this.processedContent().reverse();
+    } else {
+      return false;
+    }
   };
 }
